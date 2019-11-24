@@ -9,7 +9,7 @@ package myDAO;
  *
  * @author george
  */
-import mynetflix.Usuario;
+import modelos.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,8 +22,9 @@ public class UsuarioDAO {
     private final String UPDATEUSER = "UPDATE usuario SET login = ?, prioridade = ?, senha = ? WHERE login = ?";
     private final String RMUSER = "DELETE FROM usuario WHERE login = ?";
     private final String LISTUSER = "SELECT * FROM usuario";
-    private final String SEARCHUSER = "SELECT * FROM usuario WHERE UPPER(login) LIKE ?";
-    private final String GETID = "SELECT ID_USUARIO FROM USUARIO WHERE LOGIN LIKE ?";
+    private final String VUSER = "SELECT * FROM usuario WHERE LOGIN like '?' AND SENHA like '?'";
+    private final String SEARCHUSER = "SELECT * FROM usuario WHERE UPPER(login) LIKE '?'";
+    private final String GETID = "SELECT ID_USUARIO FROM USUARIO WHERE LOGIN LIKE '?'";
     
     public boolean addUser(Usuario u){
         try {
@@ -77,6 +78,21 @@ public class UsuarioDAO {
             remover = con.getConexao().prepareStatement(RMUSER);
             remover.setString(1, login);            
             remover.execute();           
+            con.desconecta();
+            return true;
+        } catch(SQLException ex){
+            System.err.println(ex);
+            return false;
+        }
+    }
+    public boolean valiUser(String login, String senha){
+        try {
+            con.conecta();
+            PreparedStatement validar;            
+            validar = con.getConexao().prepareStatement(VUSER);
+            validar.setString(1, login);   
+            validar.setString(2, senha);     
+            validar.execute();           
             con.desconecta();
             return true;
         } catch(SQLException ex){

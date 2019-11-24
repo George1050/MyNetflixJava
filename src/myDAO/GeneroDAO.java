@@ -10,7 +10,7 @@ package myDAO;
  * @author george
  */
 
-import mynetflix.Genero;
+import modelos.Genero;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

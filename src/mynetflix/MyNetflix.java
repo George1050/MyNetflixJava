@@ -5,32 +5,58 @@
  */
 package mynetflix;
 
-import netflixDAO.UsuarioDAO;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+//import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
  *
- * @author georg
+ * @author george
  */
 public class MyNetflix extends Application {
+   
+    private static Stage stageInicial;
+    
+    private static Scene principal;
+    private static Scene cadastrar;
+    private static Scene inicial;
     
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/loginScene.fxml"));
-        Parent root = loader.load();
-        stage.setScene(new Scene(root));
-        stage.show();
+        stageInicial = stage;
+        
+        Parent principalTela = FXMLLoader.load(getClass().getResource("/telas/Principal.fxml"));
+        principal = new Scene(principalTela);
+        
+        Parent inicialTela = FXMLLoader.load(getClass().getResource("/telas/Inicial.fxml"));
+        inicial = new Scene(inicialTela);
+        
+        Parent cadastrarTela = FXMLLoader.load(getClass().getResource("/telas/CadastrarUsuario.fxml"));
+        cadastrar = new Scene(cadastrarTela);
+        
+        stageInicial.setScene(inicial);
+        stageInicial.show();
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);        
+    
+    public static void trocarTela(String tela){
+        switch(tela){
+            case "inicial":
+                stageInicial.setScene(inicial); 
+                break;
+            case "principal":
+                stageInicial.setScene(principal);
+                break;
+            case "cadastrar":
+                stageInicial.setScene(cadastrar);
+                break;
+        }
+    }
+    public static void main(String[] args) {        
+        launch(args);
     }
     
 }
