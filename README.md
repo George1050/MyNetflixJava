@@ -1,2 +1,2 @@
 # MyNetflixJava
-Versão inicial sem interface de uma netflix basica kkk
+Versão com interface inicial de uma netflix basica.
