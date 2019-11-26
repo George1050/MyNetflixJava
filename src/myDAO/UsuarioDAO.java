@@ -22,7 +22,7 @@ public class UsuarioDAO {
     private final String UPDATEUSER = "UPDATE usuario SET login = ?, prioridade = ?, senha = ? WHERE login = ?";
     private final String RMUSER = "DELETE FROM usuario WHERE login = ?";
     private final String LISTUSER = "SELECT * FROM usuario";
-    private final String VUSER = "SELECT * FROM usuario WHERE LOGIN like '?' AND SENHA like '?'";
+    private final String VUSER = "SELECT * FROM USUARIO WHERE LOGIN = ? AND SENHA = ?";
     private final String SEARCHUSER = "SELECT * FROM usuario WHERE UPPER(login) LIKE '?'";
     private final String GETID = "SELECT ID_USUARIO FROM USUARIO WHERE LOGIN LIKE '?'";
     

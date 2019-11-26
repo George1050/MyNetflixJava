@@ -97,7 +97,7 @@ public class SerieDAO {
             listar = con.getConexao().prepareStatement(LSSERIE);
             ResultSet rs = listar.executeQuery();
             while(rs.next()){
-                Serie f = new Serie(rs.getInt("COD_FILME"), rs.getString("NOME"), rs.getInt("GENERO"), rs.getInt("NUM_EPI"), rs.getString("SINOPSE"));
+                Serie f = new Serie(rs.getInt("COD_SERIE"), rs.getString("NOME"), rs.getInt("GENERO"), rs.getString("SINOPSE"), rs.getInt("NUM_EPI"));
                 lista.add(f);
             }
             System.out.println(lista);
@@ -115,7 +115,7 @@ public class SerieDAO {
             listar = con.getConexao().prepareStatement(PSERIE);
             ResultSet rs = listar.executeQuery();
             while(rs.next()){
-                Serie f = new Serie(rs.getString("NOME"), rs.getInt("GENERO"), rs.getInt("NUM_EPI"), rs.getString("SINOPSE"));
+                Serie f = new Serie(rs.getString("NOME"), rs.getInt("GENERO"), rs.getString("SINOPSE"), rs.getInt("NUM_EPI"));
                 lista.add(f);
             }
             con.desconecta();

@@ -5,7 +5,10 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
@@ -28,17 +31,17 @@
                   <Insets left="20.0" top="25.0" />
                </padding>
             </Label>
-            <Hyperlink fx:id="filme" accessibleRole="BUTTON" onAction="#listGenero" styleClass="btn-links" text="Filmes">
+            <Hyperlink fx:id="filme" accessibleRole="BUTTON" onAction="#onClickFilme" styleClass="btn-links" text="Filmes">
                <HBox.margin>
                   <Insets right="20.0" top="30.0" />
                </HBox.margin>
             </Hyperlink>
-            <Hyperlink fx:id="serie" accessibleRole="BUTTON" styleClass="btn-links" text="Series">
+            <Hyperlink fx:id="serie" accessibleRole="BUTTON" onAction="#onClickSerie" styleClass="btn-links" text="Series">
                <HBox.margin>
                   <Insets right="20.0" top="30.0" />
                </HBox.margin>
             </Hyperlink>
-            <ComboBox fx:id="genero" prefWidth="150.0" promptText="Genero">
+            <ComboBox fx:id="listGenero" prefWidth="150.0" promptText="Genero">
                <HBox.margin>
                   <Insets right="20.0" top="30.0" />
                </HBox.margin>
@@ -50,10 +53,21 @@
             </TextField>
             <Button fx:id="pesquisar" contentDisplay="CENTER" mnemonicParsing="false" text="Pesquisar" textAlignment="CENTER">
                <HBox.margin>
-                  <Insets left="20.0" top="25.0" />
+                  <Insets left="20.0" top="30.0" />
                </HBox.margin>
             </Button>
+            <ImageView fx:id="menu" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@../img/user.png" />
+               </image>
+            </ImageView>
          </children>
       </HBox>
    </top>
+   <center>
+      <ListView fx:id="listaMovies" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

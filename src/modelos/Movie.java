@@ -3,40 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mynetflix;
+package modelos;
 
 /**
  *
- * @author george
+ * @author Aluno
  */
-public class Filme {
-    private int cod_filme;
+public abstract class Movie {
+    private int codigo;
     private String nome;
     private int genero;
-    private String duracao;
     private String sinopse;
 
-    public Filme(String nome, int genero, String duracao, String sinopse) {
+    public Movie(int codigo, String nome, int genero, String sinopse) {
+        this.codigo = codigo;
         this.nome = nome;
         this.genero = genero;
-        this.duracao = duracao;
+        this.sinopse = sinopse;
+    }
+    
+    public Movie(String nome, int genero, String sinopse) {
+        this.nome = nome;
+        this.genero = genero;
         this.sinopse = sinopse;
     }
 
-    public Filme(int cod_filme, String nome, int genero, String duracao, String sinopse) {
-        this.cod_filme = cod_filme;
-        this.nome = nome;
-        this.genero = genero;
-        this.duracao = duracao;
-        this.sinopse = sinopse;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public int getCod_filme() {
-        return cod_filme;
-    }
-
-    public void setCod_filme(int cod_filme) {
-        this.cod_filme = cod_filme;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getNome() {
@@ -55,14 +52,6 @@ public class Filme {
         this.genero = genero;
     }
 
-    public String getDuracao() {
-        return duracao;
-    }
-
-    public void setDuracao(String duracao) {
-        this.duracao = duracao;
-    }
-
     public String getSinopse() {
         return sinopse;
     }
@@ -73,8 +62,7 @@ public class Filme {
 
     @Override
     public String toString() {
-        return "Filme{" + "cod_filme=" + cod_filme + ", nome=" + nome + ", genero=" + genero + ", duracao=" + duracao + ", sinopse=" + sinopse + '}';
+        return nome + "\n" + sinopse;
     }
-    
     
 }

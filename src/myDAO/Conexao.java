@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  * @author george
  */
 public class Conexao {
-    private static final String USUARIO = "george";
+    private static final String USUARIO = "admin";
     private static final String SENHA = "1234";
     private static final String CAMINHO = "jdbc:h2:~/jdbc/mynetflix";
     private static final String DRIVER = "org.h2.Driver";
