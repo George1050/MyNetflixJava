@@ -5,29 +5,32 @@
  */
 package controles;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import modelos.Filme;
 import modelos.Genero;
 import modelos.Movie;
 import modelos.Serie;
 import myDAO.FilmeDAO;
-import myDAO.GeneroDAO;
 import myDAO.SerieDAO;
+import mynetflix.MyNetflix;
 
-public class FXMLPrincipalController {
+public class FXMLPrincipalController implements Initializable {
     private FilmeDAO f = new FilmeDAO();
     private SerieDAO s = new SerieDAO();
-    private GeneroDAO g = new GeneroDAO();
     @FXML
     private Label mynetflix;
     @FXML
@@ -35,24 +38,20 @@ public class FXMLPrincipalController {
     @FXML
     private Hyperlink serie;
     @FXML
-    private ComboBox genero;
-    @FXML
     private TextField valPesquisa; 
     @FXML
     private Button pesquisar;
+   
     @FXML
-    public void listGenero(ActionEvent event){
-        
-    }
-    
-    @FXML
-    private ImageView config;
+    private Button perfil;
     
     @FXML
     protected ListView<Movie> listaMovies;
+    
     @FXML
-    protected ComboBox<Genero> listaGenero;
-
+    public void onMenuPerfil(ActionEvent e){
+        MyNetflix.trocarTela("perfil");
+    }
     
     public void initialize(){
         atualizarLista();
@@ -79,9 +78,13 @@ public class FXMLPrincipalController {
     private void listaFilme(){
         listaMovies.getItems().clear();
         for(Filme list : f.listAll())
-            listaMovies.getItems().add(list);
+        listaMovies.getItems().add(list);
         
     }
-    
+ 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
     
 }

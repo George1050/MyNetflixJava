@@ -36,9 +36,10 @@ public class SerieDAO {
             
             //atribuir os parâmetros que irão substituir os '?' das queries sql em ordem
             sqlquery.setString(1, f.getNome());            
-            sqlquery.setInt(2, f.getGenero());         
+            sqlquery.setInt(2, f.getGenero()); 
             sqlquery.setInt(3, f.getNum_epi()); 
             sqlquery.setString(4, f.getSinopse()); 
+            
             
             //executar
             sqlquery.execute();

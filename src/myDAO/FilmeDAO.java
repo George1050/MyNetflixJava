@@ -97,7 +97,7 @@ public class FilmeDAO {
             listar = con.getConexao().prepareStatement(LSFILME);
             ResultSet rs = listar.executeQuery();
             while(rs.next()){
-                Filme f = new Filme(rs.getInt("COD_FILME"), rs.getString("NOME"), rs.getInt("GENERO"), rs.getString("SINOPSE"), rs.getString("DURACAO"));
+                Filme f = new Filme(rs.getInt("COD_FILME"), rs.getString("NOME"), rs.getInt("GENERO"), rs.getString("DURACAO"), rs.getString("SINOPSE"));
                 lista.add(f);
             }
             System.out.println(lista);
@@ -115,7 +115,7 @@ public class FilmeDAO {
             listar = con.getConexao().prepareStatement(PFILME);
             ResultSet rs = listar.executeQuery();
             while(rs.next()){
-                Filme f = new Filme(rs.getString("NOME"), rs.getInt("GENERO"), rs.getString("SINOPSE"), rs.getString("DURACAO"));
+                Filme f = new Filme(rs.getString("NOME"), rs.getInt("GENERO"), rs.getString("DURACAO"), rs.getString("SINOPSE"));
                 lista.add(f);
             }
             con.desconecta();
