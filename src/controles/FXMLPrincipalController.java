@@ -54,7 +54,8 @@ public class FXMLPrincipalController implements Initializable {
     }
     
     public void initialize(){
-        atualizarLista();
+        listaFilme();
+        listaSerie();
     }
     
     private void atualizarLista(){
@@ -86,5 +87,8 @@ public class FXMLPrincipalController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-    
+    public void cancelar(ActionEvent event) {
+        valPesquisa.clear();
+        
+    }
 }

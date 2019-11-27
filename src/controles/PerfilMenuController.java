@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -35,7 +36,7 @@ public class PerfilMenuController implements Initializable {
     private SerieDAO serie = new SerieDAO();
     
     @FXML
-    private Label home;
+    private Hyperlink home;
 
     @FXML
     private TextField login;
@@ -84,14 +85,27 @@ public class PerfilMenuController implements Initializable {
 
     @FXML
     private Button sair;
+    @FXML
+    public void cancelar(ActionEvent event) {
+        nomeSerie.clear();
+        nomeFilme.clear();
+        numEpi.clear();
+        descricaoSerie.clear();
+        descricaoFilme.clear();
+        duracao.clear();
+        senha.clear();
+        login.clear();
+    }
 
     @FXML
     void cadastrarFilme(ActionEvent event) {
         String titulo = nomeFilme.getText();
         String dur = duracao.getText();
         String sinopse = descricaoFilme.getText();
-        f = new Filme(titulo, 1, dur, sinopse);
+        f = new Filme(titulo, 1, sinopse, dur);
         filme.addFilme(f);
+        MyNetflix.trocarTela("principal",null);
+        cancelar(event);
     }
 
     @FXML
@@ -101,20 +115,12 @@ public class PerfilMenuController implements Initializable {
         int epi = Integer.parseInt(num);
         String sinopse = descricaoSerie.getText();
         s = new Serie(titulo, 2, sinopse, epi);
-        serie.addFilme(s);
+        serie.addSerie(s);
+        MyNetflix.trocarTela("principal",null);
+        cancelar(event);
     }
 
-    @FXML
-    void cancelar(ActionEvent event) {
-       /* nomeSerie.clear();
-        nomeFilme.clear();
-        numEpi.clear();
-        descricaoSerie.clear();
-        descricaoFilme.clear();
-        duracao.clear();
-        senha.clear();
-        login.clear();*/
-    }
+    
 
     @FXML
     void editarPerfilUsuario(ActionEvent event) {
@@ -122,8 +128,8 @@ public class PerfilMenuController implements Initializable {
     }
 
     @FXML
-    void home(ActionEvent event) {
-
+    void principal(ActionEvent event) {
+        MyNetflix.trocarTela("principal",null);
     }
 
     @FXML

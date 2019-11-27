@@ -35,7 +35,8 @@ public class CadastrarUsuarioController implements Initializable {
 
     @FXML
     public void cancelarCadastro(ActionEvent event) {
-        mynetflix.MyNetflix.trocarTela("inicial");
+        mynetflix.MyNetflix.trocarTela("inicial",null);
+        cancelar(event);
     }
     @FXML
     public void cadastrarBD(ActionEvent event) {
@@ -44,11 +45,18 @@ public class CadastrarUsuarioController implements Initializable {
         user = new Usuario(nome, 1, pass);
         UsuarioDAO u = new UsuarioDAO();
         u.addUser(user);
+        mynetflix.MyNetflix.trocarTela("inicial",null);
+        cancelar(event);
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    public void cancelar(ActionEvent event) {
+        senha.clear();
+        login.clear();
+    }
     
 }

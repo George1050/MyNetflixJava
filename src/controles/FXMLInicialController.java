@@ -35,13 +35,20 @@ public class FXMLInicialController{
         System.out.println(nome+ pass);
         boolean val = u.valiUser(nome, pass);
         if(val){
-            mynetflix.MyNetflix.trocarTela("principal");  
+            mynetflix.MyNetflix.trocarTela("principal", null);
+            cancelar(event);
         }
+        
         
     }
     @FXML
     public void cadastrarNovoUsuario(ActionEvent event) {
-        mynetflix.MyNetflix.trocarTela("cadastrar");
+        mynetflix.MyNetflix.trocarTela("cadastrar", null);
+        
+    }
+    public void cancelar(ActionEvent event) {
+        senha.clear();
+        login.clear();
     }
 
     

@@ -26,7 +26,7 @@ public class SerieDAO {
     private final String PSERIE = "SELECT * FROM serie WHERE UPPER(nome) LIKE ?";
     private final String GETCOD = "SELECT COD_SERIE FROM SERIE WHERE nome LIKE ?";
     
-    public boolean addFilme(Serie f){
+    public boolean addSerie(Serie f){
         try {
             //conectar ao banco e preparar a string do sql pelo objeto de PreparedStatement
             con.conecta();

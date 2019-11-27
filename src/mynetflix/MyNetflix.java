@@ -55,7 +55,7 @@ public class MyNetflix extends Application {
                 break;
             case "principal":
                 stageInicial.setScene(principal);
-                notificarMudancaTela("pricipal",null);
+                notificarMudancaTela("pricipal", dados);
                 break;
             
             case "cadastrar":

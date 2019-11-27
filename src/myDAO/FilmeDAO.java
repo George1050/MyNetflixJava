@@ -30,19 +30,25 @@ public class FilmeDAO {
         try {
             //conectar ao banco e preparar a string do sql pelo objeto de PreparedStatement
             con.conecta();
+            System.out.println("1");
             PreparedStatement sqlquery;
+            System.out.println("2");
             
             sqlquery = con.getConexao().prepareStatement(ADDFILME);
+            System.out.println("3");
             
             //atribuir os parâmetros que irão substituir os '?' das queries sql em ordem
             sqlquery.setString(1, f.getNome());            
             sqlquery.setInt(2, f.getGenero());         
             sqlquery.setString(3, f.getDuracao()); 
             sqlquery.setString(4, f.getSinopse()); 
+            System.out.println("4");
             
             //executar
             sqlquery.execute();
+            //System.out.println("5");
             con.desconecta();
+            //System.out.println("6");
             return true;
         } catch (SQLException ex) {
             System.out.println("NÃO PODE CRIAR DOIS IGUAIS");
@@ -97,7 +103,7 @@ public class FilmeDAO {
             listar = con.getConexao().prepareStatement(LSFILME);
             ResultSet rs = listar.executeQuery();
             while(rs.next()){
-                Filme f = new Filme(rs.getInt("COD_FILME"), rs.getString("NOME"), rs.getInt("GENERO"), rs.getString("DURACAO"), rs.getString("SINOPSE"));
+                Filme f = new Filme(rs.getInt("COD_FILME"), rs.getString("NOME"), rs.getInt("GENERO"), rs.getString("SINOPSE"), rs.getString("DURACAO"));
                 lista.add(f);
             }
             System.out.println(lista);
